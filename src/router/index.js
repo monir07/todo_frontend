@@ -7,17 +7,20 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomeView,
+    meta: { title: "Login" }
   },
   {
     path: '/signup/',
     name: 'signup',
-    component: SignUpView
+    component: SignUpView,
+    meta: { title: "Sign up" }
   },
   {
     path: '/todo/',
     name: 'todo',
-    component: TodoView
+    component: TodoView,
+    meta: { title: "Todo list" }
   },
 
 ]
@@ -31,6 +34,7 @@ const protectedRoutes = [
   'todo'
 ]
 
+// if login redirect to to do list page
 router.beforeEach((to, from, next) => {
   const isProtected = protectedRoutes.includes(to.name);
   if (isProtected && !localStorage.getItem('token')) {
@@ -50,4 +54,11 @@ router.beforeEach((to, from, next) => {
     }
   }
 })
+
+// set the title based on the route
+router.beforeEach((to, from, next) => {
+  document.title =
+    to.meta.title || "Default Title";
+  next();
+});
 export default router

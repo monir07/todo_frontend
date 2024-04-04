@@ -1,5 +1,17 @@
 <template>
-    <div class="about">
-        <h1>Todo</h1>
+    <div>
+        <TodoList />
     </div>
 </template>
+
+<script>
+// @ is an alias to /src
+import TodoList from '@/components/TodoList.vue'
+
+export default {
+    name: 'SignUpView',
+    components: {
+        TodoList
+    }
+}
+</script>
