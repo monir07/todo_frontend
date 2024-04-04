@@ -22,6 +22,12 @@
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary w-100">Login</button>
                         </div>
+                        <div class="mb-3 text-start">
+                            <p>
+                                Dont have an account for this system. Please
+                                <router-link class="text-decoration-none" to="/signup">click</router-link> to register.
+                            </p>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -62,6 +68,7 @@ export default {
                         this.errors.wrong_credentials = "";
                         this.username = "";
                         this.password = "";
+                        this.$router.push('/todo/');
                     })
                     .catch(error => {
                         // console.log(error);

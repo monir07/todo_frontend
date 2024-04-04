@@ -3,7 +3,7 @@
         <div class="row d-flex justify-content-center">
             <div class="col-md-6">
                 <div class="card px-5 py-5">
-                    <h3 class="text-muted">Signup to account</h3>
+                    <h3 class="text-muted">Signup an account</h3>
                     <form @submit.prevent="submitForm">
 
                         <div class="form-group mb-4 text-start">
@@ -23,6 +23,12 @@
                         </div>
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary w-100">Signup</button>
+                        </div>
+                        <div class="mb-3 text-start">
+                            <p>
+                                Already have an account.
+                                <router-link class="text-decoration-none" to="/">click</router-link> to login.
+                            </p>
                         </div>
                     </form>
                 </div>
@@ -62,6 +68,7 @@ export default {
                 const url = '/auth/users/';
                 axios.post(url, { username: this.username, password: this.password })
                     .then(response => {
+                        this.$router.push('/');
                         this.username = "";
                         this.password = "";
                         this.password2 = "";
